@@ -56,8 +56,8 @@ def fit_asymptotes(xdata,ydata,pressure,current,first_a_guess=1,first_b_guess=-2
     plt.plot(xdata, ydata, 'b-',label='Data')
     plt.xlabel('Probe voltage [V]',loc='right')
     plt.ylabel('Probe current [mA]',loc='top')
-    plt.plot(xdata[:zero_index], asymptote(xdata[:zero_index], *popt_0), 'r--', label='asymptote I2+')
-    plt.plot(xdata[zero_index:], asymptote(xdata[zero_index:], *popt_1), 'g--', label='asymptote I1+')
+    plt.plot(xdata[:zero_index], asymptote(xdata[:zero_index], *popt_0), 'r--', label=r'asymptote $I_{2+}$')
+    plt.plot(xdata[zero_index:], asymptote(xdata[zero_index:], *popt_1), 'g--', label=r'asymptote $I_{1+}$')
     plt.plot(xdata[start_index_2-10:stop_index_2+10], asymptote(xdata[start_index_2-10:stop_index_2+10], *popt_2), 'm--', label='tangent at origin')
 
     plt.legend()
