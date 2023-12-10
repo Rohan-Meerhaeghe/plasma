@@ -172,9 +172,9 @@ for data_set in data:
 def string_formatter(result_data):
     return (
         "&  4 mA&  8 mA& 15 mA\\\\ \hline \n\t0.08 mbar&  "
-        + np.array2string(result_data[0], separator="& ",precision=3)[1:-1]
+        + np.array2string(result_data[0], separator="& ",precision=0)[1:-1]
         + "\\\\ \hline \n\t0.28 mbar&  "
-        + np.array2string(result_data[1], separator="& ",precision=3)[1:-1]
+        + np.array2string(result_data[1], separator="& ",precision=0)[1:-1]
         + "\\\\ \hline\n"
     )
 
