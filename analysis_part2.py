@@ -3,6 +3,7 @@ import pandas
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 import os
+import scipy.constants as cst
 
 
 class Results:
@@ -12,6 +13,7 @@ class Results:
         self.I2 = np.zeros((2, 3), dtype="float")
         self.dI2dV = np.zeros((2, 3), dtype="float")
         self.dIdV = np.zeros((2, 3), dtype="float")
+        self.Te = np.zeros((2,3), dtype="float")
 
 
 results = Results()
@@ -159,7 +161,7 @@ def fit_asymptotes(
     results.I2[index_0][index_1] = popt_0[1]
     results.dI2dV[index_0][index_1] = popt_0[0]
     results.dIdV[index_0][index_1] = popt_2[0]
-
+    results.Te[index_0][index_1] = cst.elementary_charge/cst.Boltzmann*(2*np.abs(popt_1[1])*popt_0[1]/(-popt_1[1]+popt_0[1])*1/(2*popt_2[0]-0.5*(popt_1[0]+popt_0[0])))
 
 for data_set in data:
     fit_asymptotes(
@@ -182,3 +184,4 @@ print("\tdI1+/dV: \n", string_formatter(results.dI1dV))
 print("\tI2+: \n", string_formatter(results.I2))
 print("\tdI2+/dV: \n", string_formatter(results.dI2dV))
 print("\tdI/dV: \n", string_formatter(results.dIdV))
+print("\tTe: \n", string_formatter(results.Te))
